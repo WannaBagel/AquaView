@@ -50,6 +50,10 @@ class LoginPage:
             create_butt = Button(self.create_frame, text = "Create Account", bg = '#608da2', command= lambda: LoginPage(window))
             create_butt.place(x = 125, y = 350, width = 150, height = 30)
 
+            #Errors
+            self.heading = Label(self.create_frame, text = "That username is already taken", bg = '#608da2', fg = 'red')
+            self.heading.place(x = 150, y = 65, width = 200, height = 25)
+
 
 #/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -66,7 +70,10 @@ class LoginPage:
         self.heading.place(x = 10, y = 100, width = 120, height = 50)
 
         self.heading = Label(self.login_frame, text = 'Password', font= ('Arial', 16, 'bold'), bg ='#608da2', fg = 'black')
-        self.heading.place(x = 10, y = 180, width = 120, height = 50)
+        self.heading.place(x = 10, y = 190, width = 120, height = 50)
+
+        self.heading = Label(self.login_frame, text = "Don't have an account?", font = ('Arial', 8), bg ='#608da2', fg = 'black')
+        self.heading.place(x = 12, y = 305, width = 120, height = 50)
 
         #/////////// Entries /////////// #
 
@@ -77,14 +84,14 @@ class LoginPage:
         pass_box.place(x = 10, y = 230, width = 375, height = 30)
 
         #//////////// Buttons ////////////// #
-        login_butt = Button(self.login_frame, text = 'LOGIN', font= ('Arial', 16, 'bold'), bg = 'white', fg = 'black')
+        login_butt = Button(self.login_frame, text = 'LOGIN', font= ('Arial', 16, 'bold'), bg = '#A2B5CD', fg = 'black')
         login_butt.place(x = 275, y = 275, width = 100, height = 25)
 
         remember_butt = Checkbutton(self.login_frame, text = 'Remember Me', bg = '#608da2')
         remember_butt.place(x = 12, y = 275, width = 100, height = 12)
 
-        create_acc = Button(self.login_frame, text = 'create account', bg = '#608da2', command=create_account)
-        create_acc.place(x = 12, y = 350, width = 100, height = 16)
+        create_acc = Button(self.login_frame, text = 'create account', bg = '#A2B5CD', command=create_account)
+        create_acc.place(x = 12, y = 340, width = 100, height = 18)
 
 
 
