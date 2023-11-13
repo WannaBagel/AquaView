@@ -1,47 +1,42 @@
-#basic choosing game
+#A fish appears in 1 of 9 positions, the player will choose what position the fish is in
 
-#"random" numbers based on pi
-rowSelect = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3]
-columnSelect = [2, 6, 4, 3, 3, 2, 3, 8, 4, 6, 8, 9, 7, 9, 3, 2, 6, 5, 3, 5, 1, 4, 1, 5, 9, 3] 
+#"random" positions for FISH based on pi
+posSelect = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3]
 
-#random numbers will be iterated through
-randomNum = 0
+i = 0 #iterator
+score = 0   #set score
 
-
-#clear gameOver whenever the game needs to end 
-gameOver = 1
-
-#infinite loop
-
-while (gameOver == 1): #test if the loop needs to restart
-    if randomNum > len(rowSelect):
-        randomNum = 0
-
-    #FIXME: Use a 2D list and display as a 2D list
-    rowList = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    columnList = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-    rowList.remove(rowSelect(randomNum))
-    columnList.remove(rowSelect(randomNum))
-
-    rowList.insert(randomNum, "FISH")
-    columnList.insert(randomNum, "FISH")
-
-    print(rowList) #display row and column
-    print(columnList)
+while(1):
+    #test for restart condition (maintain their score though)
+    if(i == 23): 
+        i = 0
+    #list of posible positions
+    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9] 
+    
+    #display score
+    print("Fish Clicked: ", score) 
     print()
 
+    #fish inserted into given position
+    arr[posSelect[i]-1] = "FISH" 
 
+    #display list in row/column format
+    print(arr[0], " ", arr[1], " ",  arr[2])
+    print(arr[3], " ", arr[4], " ", arr[5]) 
+    print(arr[6], " ", arr[7], " ", arr[8]) 
 
+    print()
+    print("Where is the fish?")
 
-    print("Choose a Column: ") #temporary testing prompt
+    #take user input (this is where you would "click" the fish)
+    usrSelect = input() 
 
-    column = input()
-
-    print("Choose a Row: ") #temp
-
-    row = input()
-
-  
-
-    randomNum = randomNum + 1
+    #test for win condition
+    if(int(usrSelect) == (posSelect[i])): 
+        print("CORRECT!")
+        score = score + 1
+    else:
+        print("WRONG!")
+    
+    #iterate 
+    i = i + 1
