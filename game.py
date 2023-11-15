@@ -1,5 +1,7 @@
 #A fish appears in 1 of 9 positions, the player will choose what position the fish is in
 
+#Test Comment
+
 #"random" positions for FISH based on pi
 posSelect = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3]
 
