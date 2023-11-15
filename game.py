@@ -52,7 +52,7 @@ def initializeFish():
     global fishLocationEncoder
     global i
 
-    fishButton = tk.Button(buttonFrame, text= "FISH", font=('Arial', 16), command=fishClicked, background='Aqua')
+    fishButton = tk.Button(buttonFrame, text= "🐠", font=('Arial', 16), command=fishClicked, background='Aqua', fg='Dark Orange')
     fishButton.grid(row=fishLocationEncoder[answer[i]-1][0], column=fishLocationEncoder[answer[i]-1][1], sticky=tk.NS)
 
 
