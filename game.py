@@ -8,6 +8,7 @@ i = 0
 
 root = tk.Tk()
 root.geometry("800x500")
+root.title("Aquaview")
 
 label2 = tk.Label(root, text="Click A Fish!", font=('Arial', 18))
 label2.pack(padx=20, pady=20)
@@ -21,7 +22,7 @@ buttonFrame.columnconfigure(1, weight=1)
 buttonFrame.columnconfigure(2, weight=1)
 
 
-clickThis = tk.Label(root, text= "Click: " + str(answer[i]), font=('Arial', 18))
+clickThis = tk.Label(root, text= "FISH: " + str(answer[i]), font=('Arial', 18))
 clickThis.pack(padx=10, pady=10)
 
 def updateScore1():
@@ -118,7 +119,7 @@ def clickThisUpdate():
     global clickThis
     global fishLocation
 
-    clickThis.config(text="Click: " + str(answer[i]))
+    clickThis.config(text="FISH: " + str(answer[i]))
 
 
 def display():
