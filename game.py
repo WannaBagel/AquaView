@@ -1,6 +1,5 @@
 import tkinter as tk
 
-
 score = 0
 i = 0 #iterator
 answer = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3]
@@ -57,7 +56,6 @@ def initializeFish():
 
 
 def displayButtons():
-    #FIXME THE FISH SHOULD BE THE ONLY ACTIONABLE CLICK, THE FISH SHOULDN'T MOVE IF YOU DON'T CLICK IT
 
     button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
     button1.grid(row=0, column=0, sticky=tk.NS)
