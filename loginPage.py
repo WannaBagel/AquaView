@@ -17,7 +17,7 @@ class LoginPage:
 
 
         def Checker(user_name, Pass):
-            with open('AquaView/Temp_users_pass', 'r') as file:
+            with open('AquaView/Temp_users_pass.txt', 'r') as file:
                 print('hello 2')
                 for line in file:
                     parts = line.strip().split(':')
