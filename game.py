@@ -31,6 +31,7 @@ while(1):
     #take user input (this is where you would "click" the fish)
     usrSelect = input() 
 
+<<<<<<< Updated upstream
     #test for win condition
     if(int(usrSelect) == (posSelect[i])): 
         print("CORRECT!")
@@ -40,3 +41,44 @@ while(1):
     
     #iterate 
     i = i + 1
+=======
+#call from main to create empty buttons and begin tk main loop
+def displayButtons():
+
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1.grid(row=0, column=0, sticky=tk.NS)
+
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1.grid(row=0, column=1, sticky=tk.NS)
+
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1.grid(row=0, column=2, sticky=tk.NS)
+
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1.grid(row=1, column=0, sticky=tk.NS)
+
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1.grid(row=1, column=1, sticky=tk.NS)
+
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1.grid(row=1, column=2, sticky=tk.NS)
+
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1.grid(row=2, column=0, sticky=tk.NS)
+
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1.grid(row=2, column=1, sticky=tk.NS)
+
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1.grid(row=2, column=2, sticky=tk.NS)
+
+    initializeFish()
+    buttonFrame.config(background='Aqua')
+    buttonFrame.pack(fill='both')
+
+    root.mainloop()
+
+
+#main:
+displayButtons()
+>>>>>>> Stashed changes
