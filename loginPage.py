@@ -1,6 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image  # pip install pillow
-
+import os
 class LoginPage:
     def __init__(self, window):
         self.window = window
@@ -9,12 +9,25 @@ class LoginPage:
 
         # /////////// Background /////////// #
 
-        self.bg_pic = Image.open('AV_Images\\avbg.jpg') # get image from directory
+        self.bg_pic = Image.open('AquaView/AV_Images/avbg.jpg') # get image from directory
         photo = ImageTk.PhotoImage(self.bg_pic) # put bg pic into "photo"
         self.bg_panel = Label(self.window, image = photo) # create panel and put the photo as the image
         self.bg_panel.image = photo
         self.bg_panel.pack(fill='both', expand='yes')
 
+
+        def Checker(user_name, Pass):
+            with open('AquaView/Temp_users_pass', 'r') as file:
+                print('hello 2')
+                for line in file:
+                    parts = line.strip().split(':')
+                    
+                    if user_name == parts[0]:
+                        if Pass == parts[1]: #Holy jesus it worked
+                            window.destroy()
+                            os.system("py < AquaView/game.py")
+                            
+                            break
 #Function to create account
 #////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         def create_account():
@@ -84,7 +97,7 @@ class LoginPage:
         pass_box.place(x = 10, y = 230, width = 375, height = 30)
 
         #//////////// Buttons ////////////// #
-        login_butt = Button(self.login_frame, text = 'LOGIN', font= ('Arial', 16, 'bold'), bg = '#A2B5CD', fg = 'black')
+        login_butt = Button(self.login_frame, text = 'LOGIN', font= ('Arial', 16, 'bold'), bg = '#A2B5CD', fg = 'black', command = lambda:Checker(user_box.get(), pass_box.get()))
         login_butt.place(x = 275, y = 275, width = 100, height = 25)
 
         remember_butt = Checkbutton(self.login_frame, text = 'Remember Me', bg = '#608da2')
@@ -94,6 +107,9 @@ class LoginPage:
         create_acc.place(x = 12, y = 340, width = 100, height = 18)
 
 
+
+
+    
 
 def page():
     window = Tk()
