@@ -9,7 +9,7 @@ class LoginPage:
 
         # /////////// Background /////////// #
 
-        self.bg_pic = Image.open('AquaView/AV_Images/avbg.jpg') # get image from directory
+        self.bg_pic = Image.open('AV_Images/avbg.jpg') # get image from directory
         photo = ImageTk.PhotoImage(self.bg_pic) # put bg pic into "photo"
         self.bg_panel = Label(self.window, image = photo) # create panel and put the photo as the image
         self.bg_panel.image = photo
@@ -17,15 +17,14 @@ class LoginPage:
 
 
         def Checker(user_name, Pass):
-            with open('AquaView/Temp_users_pass.txt', 'r') as file:
-                print('hello 2')
+            with open('Temp_users_pass.txt', 'r') as file:
                 for line in file:
                     parts = line.strip().split(':')
                     
                     if user_name == parts[0]:
                         if Pass == parts[1]: #Holy jesus it worked
                             window.destroy()
-                            os.system("py < AquaView/game.py")
+                            os.system("python < game.py")
                             
                             break
 #Function to create account
