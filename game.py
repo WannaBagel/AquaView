@@ -14,7 +14,8 @@ fishButton = 0
 
 #initialize window
 root = tk.Tk()
-root.geometry("800x500")
+root.geometry("600x500")
+root.resizable(0,0)
 root.config(background='#608da2')
 root.title("Aquaview")
 
@@ -61,37 +62,37 @@ def initializeFish():
     global fishLocationEncoder
     global i
 
-    fishButton = tk.Button(buttonFrame, text= "🐠", font=('Arial', 16), command=fishClicked, background='#608da2', fg='Dark Orange')
+    fishButton = tk.Button(buttonFrame, text= "🐠", font=('Arial', 30), command=fishClicked, background='#608da2', fg='Dark Orange')
     fishButton.grid(row=fishLocationEncoder[answer[i]-1][0], column=fishLocationEncoder[answer[i]-1][1], sticky=tk.NS)
 
 #call from main to create empty buttons and begin tk main loop
 def displayButtons():
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='#608da2')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=0, column=0, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='#608da2')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=0, column=1, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='#608da2')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=0, column=2, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='#608da2')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=1, column=0, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='#608da2')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=1, column=1, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='#608da2')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=1, column=2, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='#608da2')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=2, column=0, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='#608da2')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=2, column=1, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='#608da2')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=2, column=2, sticky=tk.NS)
 
     initializeFish()
