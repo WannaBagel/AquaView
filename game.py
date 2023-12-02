@@ -1,11 +1,12 @@
 import tkinter as tk
+import random
 
 #score keeping
 score = 0   
 #iterator
 i = 0     
 #pi to 23 places for "random" number generation
-answer = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3]
+answer = [random.randint(1,9) for int in range(30)]
 #answer(i) = [Row,Column] coordinates of fish
 fishLocationEncoder = [[0,0], [0,1], [0,2], [1,0], [1,1], [1,2], [2,0], [2,1], [2,2]]
 #fishButton global variable 
