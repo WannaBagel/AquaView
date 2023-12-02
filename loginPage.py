@@ -47,13 +47,43 @@ class LoginPage:
 
             #Button
             # Lambda command makes us wait until the button is clicked to make the new login page
-            create_butt = Button(self.create_frame, text = "Create Account", bg = '#608da2', command= lambda: LoginPage(window))
+            create_butt = Button(self.create_frame, text = "Create Account", bg = '#608da2', command= lambda: createUser())
             create_butt.place(x = 125, y = 350, width = 150, height = 30)
 
-            #Errors
-            self.heading = Label(self.create_frame, text = "That username is already taken", bg = '#608da2', fg = 'red')
-            self.heading.place(x = 150, y = 65, width = 200, height = 25)
+            def createUser():
+                #Get string from entry boxes
+                username = user_box.get()
+                password = pass_box.get()
+                confirmpass = pass_box2.get()
+                taken = False
 
+                # Go through usernames and make sure the entered one DNE already
+                with open("Temp_users_pass", "r") as info:
+                    for line in info:
+                        next = line
+                        useronly = next.split(":")
+                        if username == useronly[0]:
+                            taken = True
+
+                # Show errors if username is taken or if passwords dont match
+                if taken:       
+                    self.heading = Label(self.create_frame, text = "That username is already taken", bg = '#608da2', fg = 'red')
+                    self.heading.place(x = 150, y = 65, width = 200, height = 25)
+                if password != confirmpass:
+                    self.heading = Label(self.create_frame, text = "Passwords don't match", bg = '#608da2', fg = 'red')
+                    self.heading.place(x = 150, y = 155, width = 200, height = 25)
+                
+                # If valid new user, write to the user database file
+                if taken == False and password == confirmpass:
+                    data = open("Temp_users_pass", "a")                    
+                    data.write(username)
+                    data.write(":")
+                    data.write(password)
+                    data.write("\n")
+                    data.close()
+                    LoginPage(window)
+
+                
 
 #/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -63,7 +93,7 @@ class LoginPage:
         self.login_frame.place(x = '150', y = '150')
 
         # /////////// Text /////////////#
-        self.heading = Label(self.login_frame, text = 'Aqua View', font = ('Arial', 28, 'bold'), bg = '#608da2', fg = 'black')
+        self.heading = Label(self.login_frame, text = 'Aquaview', font = ('Arial', 28, 'bold'), bg = '#608da2', fg = 'black')
         self.heading.place(x= 100, y = 15, width= 200, height= 50)
 
         self.heading = Label(self.login_frame, text = 'Username', font= ('Arial', 16, 'bold'), bg ='#608da2', fg = 'black')
