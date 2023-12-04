@@ -5,3 +5,4 @@ Gabenhiemer:NukesAreFun
 
 a:s
 f:s
+admin:admin
