@@ -1,6 +1,7 @@
 from tkinter import *
 from PIL import ImageTk, Image  # pip install pillow
 import os
+import sqlconnection
 class LoginPage:
     def __init__(self, window):
         self.window = window
@@ -9,7 +10,7 @@ class LoginPage:
 
         # /////////// Background /////////// #
 
-        self.bg_pic = Image.open('AV_Images/avbg.jpg') # get image from directory
+        self.bg_pic = Image.open('AquaView/AV_Images/avbg.jpg') # get image from directory
         photo = ImageTk.PhotoImage(self.bg_pic) # put bg pic into "photo"
         self.bg_panel = Label(self.window, image = photo) # create panel and put the photo as the image
         self.bg_panel.image = photo
@@ -58,7 +59,12 @@ class LoginPage:
                 taken = False
 
                 # Go through usernames and make sure the entered one DNE already
-                with open("Temp_users_pass.txt", "r") as info:
+                if (sqlconnection.verify_user(username, password)):
+                    taken = False
+                if (sqlconnection.verify_user(username, password)):
+                    taken = True
+                
+                with open("AquaView/Temp_users_pass.txt", "r") as info:
                     for line in info:
                         next = line
                         useronly = next.split(":")
@@ -75,7 +81,8 @@ class LoginPage:
                 
                 # If valid new user, write to the user database file
                 if taken == False and password == confirmpass:
-                    data = open("Temp_users_pass.txt", "a")                    
+                    sqlconnection.add_user(username, password)
+                    data = open("AquaView/Temp_users_pass.txt", "a")                    
                     data.write(username)
                     data.write(":")
                     data.write(password)
@@ -126,23 +133,17 @@ class LoginPage:
         def Checker():
             username = user_box.get()
             password = pass_box.get() + "\n"
-            with open('Temp_users_pass.txt', 'r') as file:
-                for line in file:
-                    parts = line.split(':')
-                    
-                    if username == parts[0]:
-                        if password == parts[1]: #Holy jesus it worked
-                            window.destroy()
-                            os.system("python < game.py")
-                            break
+            if (sqlconnection.verify_user(username,password)):
+                window.destroy()
+                os.system("py < AquaView/game.py")
 
-                        else:
-                            self.heading = Label(self.login_frame, text = "Username or password is incorrect", bg = '#608da2', fg = 'red')
-                            self.heading.place(x = 180, y = 110, width = 200, height = 25)
-                            break
+            else:
+                self.heading = Label(self.login_frame, text = "Username or password is incorrect", bg = '#608da2', fg = 'red')
+                self.heading.place(x = 180, y = 110, width = 200, height = 25)
+            
 
-            self.heading = Label(self.login_frame, text = "Username or password is incorrect", bg = '#608da2', fg = 'red')
-            self.heading.place(x = 180, y = 110, width = 200, height = 25)
+            ##self.heading = Label(self.login_frame, text = "Username or password is incorrect", bg = '#608da2', fg = 'red')
+            ##self.heading.place(x = 180, y = 110, width = 200, height = 25)
 
 def page():
     window = Tk()
