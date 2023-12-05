@@ -15,7 +15,7 @@ try:
     cursor = connection.cursor()
 
     # Example query
-    query = "SELECT * FROM your_table_name"  # Replace with your actual query
+    query = "SELECT * FROM USERS"  # Replace with your actual query
 
     # Execute the query
     cursor.execute(query)
