@@ -1,11 +1,12 @@
 import tkinter as tk
+import random
 
 #score keeping
 score = 0   
 #iterator
 i = 0     
-#pi to 23 places for "random" number generation
-answer = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3]
+#"random" number generation
+answer = [random.randint(1,9) for int in range(30)]
 #answer(i) = [Row,Column] coordinates of fish
 fishLocationEncoder = [[0,0], [0,1], [0,2], [1,0], [1,1], [1,2], [2,0], [2,1], [2,2]]
 #fishButton global variable 
@@ -13,14 +14,25 @@ fishButton = 0
 
 #initialize window
 root = tk.Tk()
-root.geometry("800x500")
-root.config(background='Aqua')
+root.geometry("600x500")
+root.resizable(0,0)
+root.config(background='#608da2')
 root.title("Aquaview")
 
+canvas = tk.Canvas(root, height=100, width=600)
+canvas.pack()
+
+bg_img = tk.PhotoImage(file="./AV_Images/Water.png")
+bg_label = canvas.create_image((0,0), image=bg_img)
+
+label_msg2 = canvas.create_text((299, 52), text="🐠 CLICK A FISH! 🐠", font="MSGothic 31", fill='black')
+label_msg = canvas.create_text((300, 50), text="🐠 CLICK A FISH! 🐠", font="MSGothic 30", fill='orange')
+
+
 #Display Game Instructions and Score
-label2 = tk.Label(root, text="Click A Fish!", font=('Arial', 18), background='Aqua')
-label2.pack(padx=20, pady=20)
-label = tk.Label(root, text="Score: " + str(score), font=('Arial', 18), background='Aqua')
+#label2 = tk.Label(root, text="Click A Fish!", font=('Arial', 18), background='#608da2')
+#label2.pack(padx=20, pady=20)
+label = tk.Label(root, text="Score: " + str(score), font=('Arial', 18), background='#608da2')
 label.pack(padx=20, pady=20)
 
 #innitialize grid for buttons
@@ -60,43 +72,41 @@ def initializeFish():
     global fishLocationEncoder
     global i
 
-    fishButton = tk.Button(buttonFrame, text= "🐠", font=('Arial', 16), command=fishClicked, background='Aqua', fg='Dark Orange')
+    fishButton = tk.Button(buttonFrame, text= "🐠", font=('Arial', 30), command=fishClicked, background='#608da2', fg='Dark Orange')
     fishButton.grid(row=fishLocationEncoder[answer[i]-1][0], column=fishLocationEncoder[answer[i]-1][1], sticky=tk.NS)
 
 #call from main to create empty buttons and begin tk main loop
 def displayButtons():
-
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=0, column=0, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=0, column=1, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=0, column=2, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=1, column=0, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=1, column=1, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=1, column=2, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=2, column=0, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=2, column=1, sticky=tk.NS)
 
-    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 16), background='Aqua')
+    button1 = tk.Button(buttonFrame, text="    ", font=('Arial', 30), background='#608da2')
     button1.grid(row=2, column=2, sticky=tk.NS)
 
     initializeFish()
-    buttonFrame.config(background='Aqua')
+    buttonFrame.config(background='#608da2')
     buttonFrame.pack(fill='both')
-
     root.mainloop()
 
 
